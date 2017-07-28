@@ -1,0 +1,1 @@
+web: gunicorn bubu.wsgi --log-file -
