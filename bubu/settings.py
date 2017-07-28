@@ -16,10 +16,9 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 EMAIL_PORT = config('EMAIL_PORT', cast=int)
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
 }
 
 
