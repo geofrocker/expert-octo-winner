@@ -19,10 +19,7 @@ class PostForm(forms.ModelForm):
 	    widget=forms.TextInput(attrs={'class': 'form-control'}),
 	    max_length=75,
 	    required=False)
-	country = forms.CharField(
-	    widget=forms.TextInput(attrs={'class': 'form-control'}),
-	    max_length=50,
-	    required=False)
+	
 	location = forms.CharField(
 	    widget=forms.TextInput(attrs={'class': 'form-control'}),
 	    max_length=50,
@@ -40,6 +37,7 @@ class PostForm(forms.ModelForm):
 			"price",
 			"country",
 			"location",
-			"phone",	
+			"phone",
+			"image"	
 
 		]

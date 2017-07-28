@@ -28,9 +28,9 @@ class Post(models.Model):
 	height_field=models.IntegerField(default=0)
 	width_field=models.IntegerField(default=0)
 	draft=models.BooleanField(default=False)
-	publish=models.DateField(auto_now=False, auto_now_add=False)
-	updated = models.DateTimeField(auto_now=True, auto_now_add=False)
-	timestamp=models.DateTimeField(auto_now=False, auto_now_add=True)
+	publish=models.DateField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now_add=True)
+	timestamp=models.DateTimeField(auto_now_add=True)
 
 	def __unicode__(self):
 		return self.product_Name

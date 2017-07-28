@@ -27,8 +27,6 @@ from django_countries.widgets import CountrySelectWidget
 # Create your views here.
 
 def post_create(request):
-	if not request.user.is_staff or not request.user.is_superuser:
-		raise Http404
 	form=PostForm(request.POST or None, request.FILES or None)
 	if form.is_valid():
 		instance=form.save(commit=False)
@@ -45,9 +43,6 @@ def post_create(request):
 def post_detail(request, slug=None):#retrieve
 	
 	instance = get_object_or_404(Post, slug=slug)
-	if instance.publish > timezone.now().date() or instance.draft:
-		if not request.user.is_staff or not request.user.is_superuser:
-			raise Http404
 	share_string = quote_plus(instance.description)
 
 	
