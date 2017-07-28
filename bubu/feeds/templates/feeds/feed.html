@@ -18,5 +18,7 @@
   </div>
   <ul class="stream">
     {% include 'feeds/partial_feed.html' with feed=feed %}
+    {% block feed %}{% endblock %}
+      
   </ul>
 {% endblock main %}

@@ -12,13 +12,6 @@
       <p>{{ feed.linkfy_post|safe }}</p>
       <div class="interaction">
 
-          <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}feeds/{{feed.pk}}" class="text-sm pull-right" target="_blank"><i class="fa fa-facebook-official margin-r-5"></i> </a>
-          <a href='https://plus.google.com/share?url={{ request.build_absolute_uri }}feeds/{{feed.pk}}' class="text-sm pull-right" target="_blank"><i class="fa fa-google-plus-official margin-r-5"></i> </a>
-
-
-          <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}feeds/{{feed.pk}}&title={{ instance.title }}&summary={{ share_string }}&source={{ request.build_absolute_uri }}"  class="text-sm pull-right" target="_blank"><i class="fa fa-linkedin-square margin-r-5"></i> </a>
-
-          <a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}feeds/{{feed.pk}}&title={{ share_string }}." class="text-sm pull-right" target="_blank"><i class="fa fa-reddit margin-r-5"></i> </a>
         {% if user in feed.get_likers %}
           
           <a href="#" class="like unlike link-black text-sm">
