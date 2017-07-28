@@ -1,0 +1,51 @@
+<article>
+  <h2><a href="{% url 'article' article.slug %}">{{ article.title }}</a></h2>
+  <div class="info">
+    <span class="date">
+      <span class="glyphicon glyphicon-calendar"></span>
+      {{ article.create_date }}
+    </span>
+    <span class="user">
+      <a href="{% url 'profile' article.create_user.username %}"><img src="{{ article.create_user.profile.get_picture }}"></a>
+      <a href="{% url 'profile' article.create_user.username %}">{{ article.create_user.profile.get_screen_name }}</a>
+    </span>
+    <span class="comments">
+      <span class="glyphicon glyphicon-comment"></span>
+      {{ article.get_comments.count }} Comments
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" class="text-sm pull-right" target="_blank"><i class="fa fa-facebook-official margin-r-5"></i> </a>
+      <a href='https://plus.google.com/share?url={{ request.build_absolute_uri }}' class="text-sm pull-right" target="_blank"><i class="fa fa-google-plus-official margin-r-5"></i> </a>
+
+
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ instance.title }}&summary={{ share_string }}&source={{ request.build_absolute_uri }}"  class="text-sm pull-right" target="_blank"><i class="fa fa-linkedin-square margin-r-5"></i> </a>
+
+      <a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}&title={{ share_string }}." class="text-sm pull-right" target="_blank"><i class="fa fa-reddit margin-r-5"></i> </a>
+    </span>
+  </div>
+  <div class="post-detail-item img">
+    {{ article.content|safe }}
+  </div>
+  {% if article.get_tags %}
+    <div class="tags">
+      {% for tag in article.get_tags %}
+        <a href="{% url 'tag' tag.tag %}"><span class="label label-default">{{ tag }}</span></a>
+      {% endfor %}
+    </div>
+  {% endif %}
+  <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" class="text-sm pull-right" target="_blank"><i class="fa fa-facebook-official margin-r-5"></i> </a>
+  <a href='https://plus.google.com/share?url={{ request.build_absolute_uri }}' class="text-sm pull-right" target="_blank"><i class="fa fa-google-plus-official margin-r-5"></i> </a>
+
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ instance.title }}&summary={{ share_string }}&source={{ request.build_absolute_uri }}"  class="text-sm pull-right" target="_blank"><i class="fa fa-linkedin-square margin-r-5"></i> </a>
+
+  <a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}&title={{ share_string }}." class="text-sm pull-right" target="_blank"><i class="fa fa-reddit margin-r-5"></i> </a>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    
+    $(".post-detail-item img").each(function(){
+      $(this).addClass("img-responsive");
+
+    })
+  })
+</script>
+</article>

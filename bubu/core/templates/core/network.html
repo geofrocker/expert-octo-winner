@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block title %}{% trans 'Network' %}{% endblock %}
+
+{% block head %}
+  <link href="{% static 'css/network.css' %}" rel="stylesheet">
+{% endblock head %}
+
+{% block main %}
+<div class="col-md-8">
+<!-- MAP & BOX PANE -->
+  <div class="box box-success">
+    <div class="box-header with-border">
+
+      <div class="row">
+        {% for user in users %}
+
+        <div class="box-body no-padding">
+          <ul class="users-list clearfix">
+            <li>
+              <img src="{{ user.profile.get_picture }}" alt="User Image">
+              <a class="users-list-name" href="{% url 'profile' user.username %}">{{ user.profile.get_screen_name }}</a>
+              <span class="users-list-date">{{ user.profile.job_title }}</span>
+              <span class="users-list-date">{{ user.profile.location }}</span>
+              <button class="btn btn-success btn-xs">Follow</button>
+            </li>
+            {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
+            {% endfor %}
+          </ul>
+          <!-- /.users-list -->
+        </div>
+        <!-- /.box-body -->
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+    {% include 'paginator.html' with paginator=users %}
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4">
+  <!-- PRODUCT LIST -->
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title">Recently Added Products</h3>
+
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+        </button>
+        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <ul class="products-list product-list-in-box">
+      {% if object_list3 %}
+      {%for obj in object_list3%} 
+        <li class="item">
+          <div class="product-img">
+            <img src="{{obj.image.url}}" alt="Product Image">
+          </div>
+          <div class="product-info">
+            <a href="{{ obj.get_absolute_url }}" class="product-title">{{obj.product_Name}}
+              <span class="label label-warning pull-right">UGX {{obj.price}}</span></a>
+                <span class="product-description">
+                  {{obj.description}}.</br>
+                  <span class="fa fa-phone "></span><a> {{obj.phone}}</a><br> 
+                </span>
+          </div>
+        </li>
+      {%endfor%}
+      {% else %}
+              <label>Nothing New at the moment</label>
+      {% endif %}
+        <!-- /.item -->
+      </ul>
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer text-center">
+      <a href="/posts/" class="uppercase">View All Products</a>
+    </div>
+    <!-- /.box-footer -->
+  </div>
+  <!-- /.box -->
+</div>
+      
+
+
+{% endblock main %}

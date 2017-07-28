@@ -1,0 +1,273 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load i18n %}
+
+{% block title %}{{ page_user.profile.get_screen_name }}{% endblock %}
+
+{% block head %}
+  <link href="{% static 'css/profile.css' %}" rel="stylesheet">
+  <link href="{% static 'css/feeds.css' %}" rel="stylesheet">
+  <script src="{% static 'js/jquery.bullseye-1.0-min.js' %}"></script>
+  <script src="{% static 'js/feeds.js' %}"></script>
+
+{% endblock head %}
+{% block javascript %}
+  <script type="text/javascript" src="{% static 'js/activities.js' %}"></script>
+{% endblock javascript %}
+
+{% block main %}
+<div class="col-md-3">
+    <!-- Profile Image -->
+    <div class="box box-primary">
+      <div class="box-body box-profile">
+        <img class="profile-user-img img-responsive img-circle" src="{{ page_user.profile.get_picture }}" alt="User profile picture">
+
+        <h3 class="profile-username text-center">{{ page_user.profile.get_screen_name }}</h3>
+
+        {% if page_user.profile.job_title %}
+        <p class="text-muted text-center">{{ page_user.profile.job_title }}</p>
+        {% endif %}
+
+        <ul class="list-group list-group-unbordered">
+
+          <li class="list-group-item">
+            <a href="{% url 'followers' page_user.username %}">
+            <b>Followers</b><span class="followers-count pull-right">{{ followers_count }}</span></a>
+          </li>
+          <li class="list-group-item">
+            <a href="{% url 'following' page_user.username %}">
+            <b>Following</b><span class="following-count pull-right">{{ following_count }}</span></a>
+          </li>
+          
+
+        </ul>
+
+        {% if user.is_authenticated %}
+          
+            {% if is_following %}
+              <span class="user-actions following update-count" data-user-id="{{ page_user.id }}">
+                <button class="btn btn-danger btn-block" type="button"><span class="glyphicon glyphicon-remove"></span> Unfollow</button>
+              </span>
+            {% else %}
+              <span class="user-actions not-following update-count" data-user-id="{{ page_user.id }}">
+                <button class="btn btn-success btn-block" type="button"><span class="glyphicon glyphicon-ok"></span> Follow</button>
+              </span>
+            {% endif %}
+        {% endif %}
+
+
+
+      </div>
+      <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+
+    <!-- About Me Box -->
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">About Me</h3>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
+
+        <p class="text-muted">
+          {{obj.education}}
+        </p>
+
+        <hr>
+
+        <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
+        {% if page_user.profile.location %}
+        <p class="text-muted">{{ page_user.profile.location }}</p>
+        {% endif %}
+        <hr>
+
+        <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+
+        <p>
+          <span class="label label-danger">{{obj.skills}}</span>
+        </p>
+
+        <hr>
+        
+        <strong><i class="fa fa-globe"></i> Web</strong>
+        {% if page_user.profile.url %}
+        <p>
+          </span> <a href="{{ page_user.profile.get_url }}" target="_blank">{{ page_user.profile.get_url }}</a>
+        </p>
+        {% endif %}
+        <hr>
+
+        <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+
+        <p>{{obj.notes}}.</p>
+      </div>
+      <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+  </div>
+  <!-- /.col -->
+ 
+  <div class="col-md-9">
+    <div class="nav-tabs-custom">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#activity" data-toggle="tab">Last Feeds</a></li>
+        
+      </ul>
+      <div class="tab-content">
+        <div class="active tab-pane" id="activity">
+          <!-- Post -->
+           <div class="stream-update">
+          <a href="#"><span class="new-posts"></span> new posts</a>
+        </div>
+        <ul class="stream">
+          {% for feed in feeds %}
+            {% include 'feeds/partial_feed.html' with feed=feed %}
+          {% endfor %}
+        </ul>
+        <div class="load">
+          <img src="{% static 'img/loading.gif' %}">
+        </div>
+        <form method="get" action="{% url 'load' %}" id="load_feed" autocomplete="off">
+          <input type="hidden" name="feed_source" id="feed_source" value="{{ page_user.pk }}">
+          <input type="hidden" name="from_feed" value="{{ from_feed }}">
+          <input type="hidden" name="page" value="{{ page }}">
+        </form>
+          <!-- /.post -->
+
+         
+        </div>
+        <!-- /.tab-pane -->
+
+        <div class="tab-pane" id="timeline">
+          <!-- The timeline -->
+          <ul class="timeline timeline-inverse">
+            <!-- timeline time label -->
+            <li class="time-label">
+                  <span class="bg-red">
+                    10 Feb. 2014
+                  </span>
+            </li>
+            <!-- /.timeline-label -->
+            <!-- timeline item -->
+            <li>
+              <i class="fa fa-envelope bg-blue"></i>
+
+              <div class="timeline-item">
+                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+
+                <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
+
+                <div class="timeline-body">
+                  Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
+                  weebly ning heekya handango imeem plugg dopplr jibjab, movity
+                  jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
+                  quora plaxo ideeli hulu weebly balihoo...
+                </div>
+                <div class="timeline-footer">
+                  <a class="btn btn-primary btn-xs">Read more</a>
+                  <a class="btn btn-danger btn-xs">Delete</a>
+                </div>
+              </div>
+            </li>
+            <!-- END timeline item -->
+            <!-- timeline item -->
+            <li>
+              <i class="fa fa-user bg-aqua"></i>
+
+              <div class="timeline-item">
+                <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
+
+                <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request
+                </h3>
+              </div>
+            </li>
+            <!-- END timeline item -->
+            <!-- timeline item -->
+            <li>
+              <i class="fa fa-comments bg-yellow"></i>
+
+              <div class="timeline-item">
+                <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
+
+                <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
+
+                <div class="timeline-body">
+                  Take me to your leader!
+                  Switzerland is small and neutral!
+                  We are more like Germany, ambitious and misunderstood!
+                </div>
+                <div class="timeline-footer">
+                  <a class="btn btn-warning btn-flat btn-xs">View comment</a>
+                </div>
+              </div>
+            </li>
+            <!-- END timeline item -->
+            <!-- timeline time label -->
+            <li class="time-label">
+                  <span class="bg-green">
+                    3 Jan. 2014
+                  </span>
+            </li>
+            <!-- /.timeline-label -->
+            <!-- timeline item -->
+            <li>
+              <i class="fa fa-camera bg-purple"></i>
+
+              <div class="timeline-item">
+                <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
+
+                <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
+
+                <div class="timeline-body">
+                  <img src="http://placehold.it/150x100" alt="..." class="margin">
+                  <img src="http://placehold.it/150x100" alt="..." class="margin">
+                  <img src="http://placehold.it/150x100" alt="..." class="margin">
+                  <img src="http://placehold.it/150x100" alt="..." class="margin">
+                </div>
+              </div>
+            </li>
+            <!-- END timeline item -->
+            <li>
+              <i class="fa fa-clock-o bg-gray"></i>
+            </li>
+          </ul>
+        </div>
+        <!-- /.tab-pane -->
+
+        <div class="tab-pane" id="settings">
+          <div class="col-sm-6">
+            <h1>Form</h1>
+            <form method="POST" action="" enctype="multipart/form-data">
+            <input type="submit" class="btn btn-default" name="Create Post"/>
+            <form>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-danger">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- /.tab-pane -->
+      </div>
+      <!-- /.tab-content -->
+    </div>
+    <!-- /.nav-tabs-custom -->
+  </div>
+  <!-- /.col -->
+
+
+<!-- profile -->
+
+{% endblock main %}

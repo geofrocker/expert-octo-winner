@@ -1,0 +1,63 @@
+{% load i18n %}
+{% load humanize %}
+
+<div feed-id="{{ feed.pk }}" csrf="{{ csrf_token }}">
+  <div class="post">
+    <div class="thumbnail">
+      <div class="user-block">
+        <img class="img-circle img-bordered-sm" src="{{ feed.user.profile.get_picture }}" alt="user image">
+            <span class="username">
+              <a href="{% url 'profile' feed.user.username %}">
+                {{ feed.user.profile.get_screen_name }}
+              </a>
+            </span>
+            {% if feed.user == user %}
+              <span class="glyphicon glyphicon-remove remove-feed" title="{% trans 'Click to remove this feed' %}"></span>
+            {% endif %}
+        <span class="description">Shared publicly - {{ feed.date|naturaltime }}</span>
+      </div>
+      <!-- /.user-block -->
+       
+      <p>
+        {{ feed.linkfy_post|safe }}
+      </p>
+      <ul class="list-inline">
+        <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
+        <li>
+          <div class="interaction">
+            {% if user in feed.get_likers %}
+              <a href="#" class="like unlike link-black text-sm">
+                <span class="fa fa-thumbs-o-up margin-r-5"></span>
+                <span class="text">{% trans 'Unlike' %}</span>
+                (<span class="like-count">{{ feed.likes }}</span>) 
+              </a>
+            {% else %}
+              <a href="#" class="like link-black text-sm" >
+                <span class="fa fa-thumbs-o-up margin-r-5"></span>
+                <span class="text">{% trans 'Like' %}</span>
+                (<span class="like-count">{{ feed.likes }}</span>)
+              </a>
+            {% endif %}
+            <a href="#" class="comment link-black text-sm" >
+              <span class="fa fa-comments-o margin-r-5"></span> {% trans 'Comment' %}
+              (<span class="comment-count">{{ feed.comments }}</span>)
+            </a>
+          </div>
+        </li>
+         
+      </ul>
+      <div class="comments">
+      <form role="form" method="post" action="{{ comment }}" onsubmit="return false">
+        {% csrf_token %}
+        <input type="hidden" name="feed" value="{{ feed.pk }}">
+        <input type="text" class="form-control input-sm" placeholder="{% trans 'Write a comment...' %}" name="post" maxlength="255">
+      </form>
+      <ol class="clearfix">
+        <li class="empty">Be the first one to comment</li>
+      </ol>
+    </div>
+    </div>
+  </div> 
+</div>
+
+
