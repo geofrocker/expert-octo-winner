@@ -24,8 +24,7 @@
   <script src="{% static 'bootstrap/js/bootstrap.min.js'%}"></script>
   <script src="{% static 'js/bubu.js' %}"></script>
   <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css'%}">
-  <script src="https://maps.google.com/maps?file=api&v=2&key=AIzaSyA3YJKN8sB-V5hadCRkNDrP_sQneCXY9FA" type="text/javascript"></script>
-  <script language="JavaScript" src="https://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
+  <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
   <script type="text/javascript">
     function load() {
       if (GBrowserIsCompatible()) {
@@ -221,10 +220,7 @@
   })
 </script>
 {% endblock body %}
-<script src="{% static 'js/ga.js' %}"></script>
-
-<script src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3YJKN8sB-V5hadCRkNDrP_sQneCXY9FA&libraries=places"></script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA3YJKN8sB-V5hadCRkNDrP_sQneCXY9FA&libraries=places"></script>
 <script src="{% static 'js/jquery.geocomplete.js'%}"></script>
 <script>
 $(document).ready(function(){
@@ -245,5 +241,6 @@ $(document).ready(function(){
       $("#location").val(geoplugin_city())   
 });
 </script>
+<script src="{% static 'js/ga.js' %}"></script>
 </body>
 </html>
