@@ -37,8 +37,12 @@ def articles(request):
 
 @login_required
 def article(request, slug):
+    products=Post.objects.all().order_by("-timestamp")
     article = get_object_or_404(Article, slug=slug, status=Article.PUBLISHED)
-    return render(request, 'articles/article.html', {'article': article})
+    return render(request, 'articles/article.html', {
+        'article': article,
+        'products':products
+        })
 
 
 @login_required
