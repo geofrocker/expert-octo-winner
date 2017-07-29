@@ -3,7 +3,7 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import get_object_or_404, redirect, render
 from django.template.loader import render_to_string
-
+from bubu.products.models import Post
 import markdown
 from bubu.articles.forms import ArticleForm
 from bubu.articles.models import Article, ArticleComment, Tag
@@ -11,6 +11,7 @@ from bubu.decorators import ajax_required
 
 
 def _articles(request, articles):
+    products=Post.objects.all().order_by("-timestamp")
     paginator = Paginator(articles, 10)
     page = request.GET.get('page')
     try:
@@ -22,12 +23,14 @@ def _articles(request, articles):
     popular_tags = Tag.get_popular_tags()
     return render(request, 'articles/articles.html', {
         'articles': articles,
-        'popular_tags': popular_tags
+        'popular_tags': popular_tags,
+        'products':products
     })
 
 
 @login_required
 def articles(request):
+
     all_articles = Article.get_published()
     return _articles(request, all_articles)
 
