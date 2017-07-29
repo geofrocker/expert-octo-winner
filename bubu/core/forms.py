@@ -25,7 +25,7 @@ class ProfileForm(forms.ModelForm):
         max_length=50,
         required=False)
     location = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
+        widget=forms.TextInput(attrs={'class': 'form-control','id': 'id_location'}),
         max_length=50,
         required=False)
 

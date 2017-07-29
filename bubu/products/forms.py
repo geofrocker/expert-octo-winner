@@ -16,12 +16,12 @@ class PostForm(forms.ModelForm):
 	    max_length=50,
 	    required=False)
 	price = forms.CharField(
-	    widget=forms.TextInput(attrs={'class': 'form-control'}),
+	    widget=forms.TextInput(attrs={'class': 'form-control','placeholder': 'Enter amount e.g 5000'}),
 	    max_length=75,
 	    required=False)
 	
 	location = forms.CharField(
-	    widget=forms.TextInput(attrs={'class': 'form-control'}),
+	    widget=forms.TextInput(attrs={'class': 'form-control','id': 'id_location'}),
 	    max_length=50,
 	    required=False)
 	phone = forms.CharField(
