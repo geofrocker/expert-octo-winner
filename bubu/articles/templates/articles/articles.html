@@ -71,7 +71,7 @@
         {%for obj in products%} 
           <li class="item">
             <div class="product-img">
-              <img src="{{obj.image.url}}" alt="Product" onerror="imgError(this);">
+              <img src="{{obj.images.url}}" alt="Product" onerror="imgError(this);">
             </div>
             <div class="product-info">
               <a href="{{ obj.get_absolute_url }}" class="product-title">{{obj.product_Name}}
@@ -98,4 +98,11 @@
   <!-- /.box -->
 </div>
 <!-- /.col -->
+<script type="text/javascript">
+function imgError(image) {
+    image.onerror = "";
+    image.src = "http://lorempixel.com/200/200/sports/Product/";
+    return true;
+}
+</script>
 {% endblock main %}
