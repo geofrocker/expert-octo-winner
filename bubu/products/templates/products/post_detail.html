@@ -9,7 +9,7 @@
     <div class="thumbnail">
         <a href="" >
         {% load staticfiles %}
-          <img src="{{instance.image.url}}" style="width:100%;height:250px;" alt="Lights" >
+          <img src="{{instance.image.url}}" style="width:100%;height:250px;" alt="Lights" onerror="imgError(this);" >
         </a>
         <div class="caption">     
           <span class="fa fa-tags"></span> Price: {{instance.price}}<br>
@@ -20,19 +20,26 @@
     </div> 
  </div>
 <div class="col-sm-2 col-md-8">
-          <div class="thumbnail">
-          <form class="form-horizontal">
-           
-              <input class="form-control" id="geocomplete" type="text" placeholder="Type in an address" />
+  <div class="thumbnail">
+  <form class="form-horizontal">
+   
+      <input class="form-control" id="geocomplete" type="text" placeholder="Type in an address" />
 
-            
-          </form>
-            <div id="map" style="width: 100%; height: 290px"></div>
-              <script>load();</script>
-            
-          </div> 
-        </div>
-                <!-- /.post -->
+    
+  </form>
+    <div id="map" style="width: 100%; height: 290px"></div>
+      <script>load();</script>
+    
+  </div> 
+</div>
+<!-- /.post -->
+<script type="text/javascript">
+function imgError(image) {
+    image.onerror = "";
+    image.src = "http://lorempixel.com/200/200/sports/Product/";
+    return true;
+}
+</script>
 
               
 	
