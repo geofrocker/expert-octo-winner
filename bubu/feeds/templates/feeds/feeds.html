@@ -90,10 +90,10 @@
               {%for obj in products%} 
                 <li class="item">
                   <div class="product-img">
-                  {% if obj.images.url %}
-                    <img src="{{obj.images.url}}" alt="Product">
+                  {% if obj.image.url %}
+                    <img src="{{obj.image.url}}" alt="Product">
                   {% else %}
-                    <img src="http://lorempixel.com/200/200/sports/Dummy-Text/" alt="Product">
+                    <img src="http://lorempixel.com/200/200/sports/{{obj.product_Name}}/" alt="Product">
                   {% endif %}
                   </div>
                   <div class="product-info">
