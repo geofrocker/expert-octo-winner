@@ -220,18 +220,19 @@
   })
 </script>
 {% endblock body %}
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3YJKN8sB-V5hadCRkNDrP_sQneCXY9FA&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASazAQ_O2qF7hN68D0ABY9Ikzom-SnSRg&libraries=places"></script>
 <script src="{% static 'js/jquery.geocomplete.js'%}"></script>
 <script>
 $(document).ready(function(){
-    
+      
+      var options = {
+      map: "#map",
+      location: "kikoni,makerere,kampala,uganda"
+      };
+
       $("#id_location").val(""+geoplugin_city()+", "+geoplugin_countryName()+"")
       $(function(){
 
-        var options = {
-        map: "#map",
-        location: "kikoni,makerere,kampala,uganda"
-        };
       $("#geocomplete").geocomplete(options);
       });
       $("#codes").text(geoplugin_currencyCode())
