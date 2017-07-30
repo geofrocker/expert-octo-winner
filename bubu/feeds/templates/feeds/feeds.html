@@ -19,13 +19,13 @@
 
        <!--    post -->
           <div class="page-header">
-              <button type="button" class="btn btn-primary pull-right btn-compose" title="{% trans 'Press Ctrl + P to compose' %}">
+              <button type="button" class="btn btn-primary pull-right btn-compose btn-flat" title="{% trans 'Press Ctrl + P to compose' %}">
                 <span class="fa fa-share"></span> {% trans 'Compose' %}
               </button>
               <h1>{% trans 'Feed' %}</h1>
           </div> 
 
-          <div class="panel panel-default panel-feed">
+          <div class="panel panel-default panel-feed flat">
             <div class="panel-heading">
               <h3 class="panel-title">{% trans 'Latest posts' %}</h3>
             </div>
@@ -37,13 +37,13 @@
                   {% csrf_token %}
                   <input type="hidden" name="last_feed">
                   <div class="form-group">
-                    <textarea class="form-control" rows="3" name="post"></textarea>
+                    <textarea class="form-control flat" rows="3" name="post"></textarea>
                   </div>
                   <div class="form-group">
-                    <button type="button" class="btn btn-primary btn-post">
+                    <button type="button" class="btn btn-primary btn-post btn-flat">
                       <span class="fa fa-send"></span> {% trans 'Post' %}
                     </button>
-                    <button type="button" class="btn btn-default btn-cancel-compose">{% trans 'Cancel' %}</button>
+                    <button type="button" class="btn btn-default btn-cancel-compose btn-flat">{% trans 'Cancel' %}</button>
                     <span class="help-block help-count pull-right">255</span>
                   </div>
                 </form>
