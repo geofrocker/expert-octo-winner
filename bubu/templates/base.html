@@ -32,7 +32,6 @@
   <script src="{% static 'bootstrap/js/bootstrap.min.js'%}"></script>
   <script src="{% static 'js/bubu.js' %}"></script>
   <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css'%}">
-  <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
   <script type="text/javascript">
     function load() {
       if (GBrowserIsCompatible()) {
@@ -88,7 +87,7 @@
           
           <li>
             <a href="#" id="notifications" data-container="body" data-toggle="popover" data-placement="bottom" title="Notifications">
-              <span class="glyphicon glyphicon-bell"></span>
+              <span class="fa fa-bell-o"></span>
             </a>
           </li>
 
@@ -208,7 +207,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0.0
     </div>
-    <strong>Copyright &copy; 2017-2019 <a href="http://bubu.com">Be ugandan Buy Ugandan</a>.</strong> All rights
+    <strong>Copyright &copy; 2017-2019 <a href="http://www.elemi.com">Be ugandan Buy Ugandan</a>.</strong> All rights
     reserved.
   </footer>
 
@@ -217,8 +216,6 @@
 {% block javascript %}{% endblock %}
 <!-- AdminLTE App -->
 <script src="{% static 'dist/js/app.min.js'%}"></script>
-
-
 <script src="{% static 'js/notifications.js' %}"></script>
 <script src="{% static 'js/check_messages.js' %}"></script>
 <script type="text/javascript">
