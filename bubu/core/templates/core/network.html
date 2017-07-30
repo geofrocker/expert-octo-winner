@@ -5,7 +5,6 @@
 {% block title %}{% trans 'Network' %}{% endblock %}
 
 {% block head %}
-  <link href="{% static 'css/network.css' %}" rel="stylesheet">
 {% endblock head %}
 
 {% block main %}
@@ -21,18 +20,17 @@
           <ul class="users-list clearfix">
             <li>
               <img src="{{ user.profile.get_picture }}" alt="User Image">
-              <a class="users-list-name pull-left" href="{% url 'profile' user.username %}">{{ user.profile.get_screen_name }}</a></br></br>
-              <span class="users-list-date pull-left">{{ user.profile.job_title }}</span></br>
-              <span class="users-list-date pull-left">{{ user.profile.location }}</span></br>
-              <button class="btn btn-success btn-xs pull-left">Follow</button>
+              <a class="users-list-name" href="{% url 'profile' user.username %}">{{ user.profile.get_screen_name }}</a>
+              <span class="users-list-date">{{ user.profile.job_title }}</span>
+              <span class="users-list-date">{{ user.profile.location }}</span>
+              <button class="btn btn-success btn-xs">Follow</button>
             </li>
-            
+            {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
+            {% endfor %}
           </ul>
           <!-- /.users-list -->
         </div>
         <!-- /.box-body -->
-      {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
-      {% endfor %}
       </div>
       </div>
     </div>
