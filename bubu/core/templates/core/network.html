@@ -26,12 +26,13 @@
               <span class="users-list-date pull-left">{{ user.profile.location }}</span></br>
               <button class="btn btn-success btn-xs pull-left">Follow</button></br>
             </li>
-            {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
-            {% endfor %}
+            
           </ul>
           <!-- /.users-list -->
         </div>
         <!-- /.box-body -->
+      {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
+      {% endfor %}
       </div>
       </div>
     </div>
