@@ -26,7 +26,7 @@
       <span class="asked">asked {{ question.update_date|naturaltime }}</span>
     </div>
     <div class="question-description post-detail-item img">
-      {{ question.description|safe truncatechars_html:100 }}
+      {{ question.description|safe|truncatechars_html:100 }}
     </div>
     {% if question.get_tags %}
       <p>
