@@ -172,11 +172,27 @@
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
     <!--     add you links here -->
+        {% if url =: feeds %}
         <li class="active"><a href="{% url 'feeds' %}">{% trans 'Feed' %}</a></li>
         <li><a href="{% url 'articles' %}">{% trans 'Articles' %}</a></li>
         <li><a href="{% url 'questions' %}">{% trans 'Q&A' %}</a></li>
         <li><a href="/products/">{% trans 'Products and Services' %}</a></li>
-        <li><a href="{% url 'network' %}">{% trans 'Network' %}</a></li>
+<!--         <li><a href="{% url 'network' %}">{% trans 'Network' %}</a></li> -->
+        {% endif %}
+        {% if url != articles %}
+        <li><a href="{% url 'feeds' %}">{% trans 'Feed' %}</a></li>
+        <li class="active"><a href="{% url 'articles' %}">{% trans 'Articles' %}</a></li>
+        <li><a href="{% url 'questions' %}">{% trans 'Q&A' %}</a></li>
+        <li><a href="/products/">{% trans 'Products and Services' %}</a></li>
+<!--         <li><a href="{% url 'network' %}">{% trans 'Network' %}</a></li> -->
+        {% endif %}
+        {% if url != articles %}
+        <li><a href="{% url 'feeds' %}">{% trans 'Feed' %}</a></li>
+        <li class="active"><a href="{% url 'articles' %}">{% trans 'Articles' %}</a></li>
+        <li><a href="{% url 'questions' %}">{% trans 'Q&A' %}</a></li>
+        <li><a href="/products/">{% trans 'Products and Services' %}</a></li>
+<!--         <li><a href="{% url 'network' %}">{% trans 'Network' %}</a></li> -->
+        {% endif %}
       </ul>
     </section>
     <!-- /.sidebar -->
