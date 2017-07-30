@@ -36,7 +36,7 @@
         <a href="{% url 'profile' question.user.username %}" class="username">{{ question.user.profile.get_screen_name }}</a>
         <small class="asked">asked {{ question.update_date|naturaltime }}</small>
       </div>
-      <div class="question-description">
+      <div class="question-description post-detail-item img">
         {{ question.description|safe }}
       </div>
       {% if question.get_tag_list %}
@@ -125,4 +125,13 @@
         </div>
         <!-- /.col -->
         </div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    
+    $(".post-detail-item img").each(function(){
+      $(this).addClass("img-responsive");
+
+    })
+  })
+</script>
 {% endblock main %}
