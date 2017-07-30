@@ -11,7 +11,7 @@
             <a href="" >
             {% load staticfiles %}
             {%if product.image%}
-              <a href="{{ product.get_absolute_url }}"><img src="{{product.image.url}}" style="width:200px;height:200px;" alt="Lights" onerror="imgError(this);" ></a>
+              <a href="{{ product.get_absolute_url }}"><img src="{{product.images.url}}" style="width:200px;height:200px;" alt="Lights" onerror="imgError(this);" ></a>
             {%endif%}
             </a>
               <div class="caption">
