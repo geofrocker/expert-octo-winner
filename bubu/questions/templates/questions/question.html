@@ -37,7 +37,7 @@
         <small class="asked">asked {{ question.update_date|naturaltime }}</small>
       </div>
       <div class="question-description">
-        {{ question.get_description_as_markdown|safe }}
+        {{ question.description|safe }}
       </div>
       {% if question.get_tag_list %}
         <p>
