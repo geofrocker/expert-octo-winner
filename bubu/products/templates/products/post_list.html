@@ -8,12 +8,8 @@
         <div class="col-sm-6 col-md-3">
 
           <div class="thumbnail">
-            <a href="" >
             {% load staticfiles %}
-            {%if product.image%}
               <a href="{{ product.get_absolute_url }}"><img src="{{product.images.url}}" style="width:200px;height:200px;" alt="Lights" onerror="imgError(this);" ></a>
-            {%endif%}
-            </a>
               <div class="caption">
                 <p>{{product.product_Name|truncatechars_html:21}}</p>
                 <span class="fa fa-tags"></span> Price: {{product.price|truncatechars_html:21}}<br>
