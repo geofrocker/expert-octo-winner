@@ -88,7 +88,7 @@
           
           <li>
             <a href="#" id="notifications" data-container="body" data-toggle="popover" data-placement="bottom" title="Notifications">
-              <span class="fa fa-bell-o"></span>
+              <span class="glyphicon glyphicon-bell"></span>
             </a>
           </li>
 
@@ -230,7 +230,7 @@
     })
   })
 </script>
-{% endblock body %}
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASazAQ_O2qF7hN68D0ABY9Ikzom-SnSRg&libraries=places"></script>
 <script src="{% static 'js/jquery.geocomplete.js'%}"></script>
 <script>
@@ -253,6 +253,7 @@ $(document).ready(function(){
       $("#location").val(geoplugin_city())   
 });
 </script>
+{% endblock body %}
 <script src="{% static 'js/ga.js' %}"></script>
 </body>
 </html>
