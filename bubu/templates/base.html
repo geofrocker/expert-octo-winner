@@ -231,28 +231,6 @@
   })
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASazAQ_O2qF7hN68D0ABY9Ikzom-SnSRg&libraries=places"></script>
-<script src="{% static 'js/jquery.geocomplete.js'%}"></script>
-<script>
-$(document).ready(function(){
-      
-      var options = {
-      map: "#map",
-      location: "kikoni,makerere,kampala,uganda"
-      };
-
-      $("#id_location").val(""+geoplugin_city()+", "+geoplugin_countryName()+"")
-      $(function(){
-
-      $("#geocomplete").geocomplete(options);
-      });
-      $("#codes").text(geoplugin_currencyCode())
-      var x=geoplugin_countryCode();
-      var y=x.toLowerCase();
-      $("#logo").addClass("flag-icon flag-icon-ug")
-      $("#location").val(geoplugin_city())   
-});
-</script>
 {% endblock body %}
 <script src="{% static 'js/ga.js' %}"></script>
 </body>
