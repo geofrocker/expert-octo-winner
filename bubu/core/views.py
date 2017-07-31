@@ -12,6 +12,8 @@ from bubu.core.forms import ChangePasswordForm, ProfileForm
 from bubu.feeds.models import Feed
 from bubu.feeds.views import FEEDS_NUM_PAGES, feeds
 from PIL import Image
+from django.http import HttpResponse
+from django.template import Context, loader
 
 
 def home(request):
@@ -178,6 +180,17 @@ def followers(request, username):
         'followers_count': followers_count
         })
     return render_to_response('core/profile.html', context)
-
+    
 def error_handler(request):
-    return render_to_response('templates/404.html')
+
+    # 1. Load models for this view
+    #from idgsupply.models import My404Method
+
+    # 2. Generate Content for this view
+    template = loader.get_template('404.html')
+    context = Context({
+        'message': 'All: %s' % request,
+        })
+
+    # 3. Return Template for this view + Data
+    return HttpResponse(content=template.render(context), content_type='text/html; charset=utf-8', status=404)
