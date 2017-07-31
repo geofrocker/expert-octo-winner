@@ -79,6 +79,16 @@ TEMPLATES = [
     },
 ]
 
+#Set this to True to avoid transmitting the CSRF cookie over HTTP accidentally.
+CSRF_COOKIE_SECURE=True
+
+
+#Set this to True to avoid transmitting the session cookie over HTTP accidentally.
+SESSION_COOKIE_SECURE=True
+
+CSRF_COOKIE_HTTPONLY=True
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
