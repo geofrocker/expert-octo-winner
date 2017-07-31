@@ -8,6 +8,7 @@ from bubu.authentication import views as bubu_auth_views
 from bubu.core import views as core_views
 from bubu.products import views as product_views
 from bubu.search import views as search_views
+import os
 
 urlpatterns = [
     url(r'^$', core_views.home, name='home'),
@@ -45,3 +46,10 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG404:
+    url('',
+    (r'^static/(?P<path>.*)$', 'django.views.static.serve',
+    {'document_root': os.path.join(os.path.dirname(__file__), 'static')} ),
+    )
+
