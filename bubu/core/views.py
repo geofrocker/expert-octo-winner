@@ -187,7 +187,7 @@ def error_handler(request):
     #from idgsupply.models import My404Method
 
     # 2. Generate Content for this view
-    template = loader.get_template('404.html')
+    template = loader.get_template('core/profile.html')
     context = Context({
         'message': 'All: %s' % request,
         })
