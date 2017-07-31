@@ -178,3 +178,6 @@ def followers(request, username):
         'followers_count': followers_count
         })
     return render_to_response('core/profile.html', context)
+
+def error404view(request):
+    return render_to_response('templates/404.html', context)
