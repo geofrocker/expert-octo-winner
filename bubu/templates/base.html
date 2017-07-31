@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{% block title %}elemi{% endblock %}</title>
+  <title>{% block title %}gelem{% endblock %}</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <meta property="og:url"           content="https://demo-bubu.herokuapp.com/feeds" />
   <meta property="og:type"          content="Social website" />
@@ -59,9 +59,9 @@
     <!-- Logo -->
     <a href="https://demo-bubu.herokuapp.com/feeds" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><span id="logo" class="flag-icon flag-icon-ug"></span><b>el</b>emi</span>
+      <span class="logo-mini"><span id="logo" class="flag-icon flag-icon-ug"></span><b>gel</b>em</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><span id="logo" class="flag-icon flag-icon-ug"></span><b>el</b>emi.ug</span>
+      <span class="logo-lg"><span id="logo" class="flag-icon flag-icon-ug"></span><b>el</b>em.ug</span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -108,7 +108,7 @@
 
                 <p>
                   {{ user.profile.get_screen_name }} -
-                  <small>Founder</small>
+                  <small>{{user.profile.job_title}}</small>
                 </p>
               </li>
               <!-- Menu Body -->

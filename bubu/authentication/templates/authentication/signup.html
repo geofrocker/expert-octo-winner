@@ -8,7 +8,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{% block title %}bubu{% endblock %}</title>
+  <title>{% block title %}gelem{% endblock %}</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css'%}">
   <link rel="icon" type="image/png" href="{% static 'img/favicon.ico' %}">
@@ -32,11 +32,11 @@
 <body class="hold-transition register-page">
 <div class="register-box">
   <div class="register-logo">
-    <a href=""><b>bubu.</b>ug</a>
+    <a href=""><b>gelem.</b>ug</a>
   </div>
 
   <div class="register-box-body">
-    <p class="login-box-msg">{% trans 'Sign up for elemi' %}</p>
+    <p class="login-box-msg">{% trans 'Sign up for gelem' %}</p>
 
     <form action="{% url 'signup' %}" method="post">
       {% csrf_token %}
@@ -76,7 +76,7 @@
         Google+</a>
     </div>
 
-    <a href="login.html" class="text-center">I already have a membership</a>
+    <a href="/feeds" class="text-center">I already have a membership</a>
   </div>
   <!-- /.form-box -->
 </div>
@@ -94,5 +94,6 @@
     });
   });
 </script>
+<script src="{% static 'js/ga.js' %}"></script>
 </body>
 </html>
