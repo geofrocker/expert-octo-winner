@@ -179,5 +179,5 @@ def followers(request, username):
         })
     return render_to_response('core/profile.html', context)
 
-def error404view(request):
-    return render_to_response('templates/404.html', context)
+def error_handler(request):
+    return render_to_response('templates/404.html')

@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.conf.urls import include, url
+from django.conf.urls import handler404, handler500
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 
@@ -8,8 +9,6 @@ from bubu.authentication import views as bubu_auth_views
 from bubu.core import views as core_views
 from bubu.products import views as product_views
 from bubu.search import views as search_views
-
-handler404 = 'core.views.error404view'
 urlpatterns = [
     url(r'^$', core_views.home, name='home'),
     url(r'^login', auth_views.login, {'template_name': 'core/cover.html'},
@@ -43,7 +42,7 @@ urlpatterns = [
     url(r'^(?P<username>[^/]+)/followers/$', activities_views.followers, name='followers'),
 ]
 
-
+handler404 = core_views.error_handler
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
