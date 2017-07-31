@@ -3,12 +3,19 @@
 {% load i18n %}
 
 {% block head %}
-  <link href="{% static 'css/cover.css' %}" rel="stylesheet">
+<link href="{% static 'css/cover.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'plugins/iCheck/square/blue.css'%}">
 {% endblock head %}
 
 {% block body %}
-  <div class="cover">
-    <h1 class="logo">gelem.ug</h1>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="/"><b>gel</b>em</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">{% trans 'Log in' %} to start your session</p>
     {% if form.non_field_errors %}
       {% for error in form.non_field_errors %}
         <div class="alert alert-danger alert-dismissable">
@@ -17,30 +24,63 @@
         </div>
       {% endfor %}
     {% endif %}
-    <div class="login">
-      <h2>{% trans 'Log in' %}</h2>
-      <form method="post" action="{% url 'login' %}" role="form">
-        {% csrf_token %}
-        <div class="form-group{% if form.username.errors %} has-error{% endif %}">
-          <label for="username">{% trans 'Username' %}</label>
-          <input type="text" class="form-control" id="username" name="username">
-          {% for error in form.username.errors %}
+
+    <form method="post" action="{% url 'login' %}" role="form">
+    {% csrf_token %}
+      <div class="form-group has-feedback{% if form.username.errors %} has-error{% endif %}">
+        <input type="text" class="form-control flat" id="username" name="username">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        {% for error in form.username.errors %}
             <label class="control-label">{{ error }}</label>
-          {% endfor %}
-        </div>
-        <div class="form-group{% if form.password.errors %} has-error{% endif %}">
-          <label for="password">{% trans 'Password' %}</label>
-          <input type="password" class="form-control" id="password" name="password">
-          {% for error in form.password.errors %}
+        {% endfor %}
+      </div>
+      <div class="form-group has-feedback{% if form.password.errors %} has-error{% endif %}">
+        <input type="password" class="form-control flat" id="password" name="password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        {% for error in form.password.errors %}
             <label class="control-label">{{ error }}</label>
-          {% endfor %}
+        {% endfor %}
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> Remember Me
+            </label>
+          </div>
         </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-default">{% trans 'Log in' %}</button>
-          <a href="{% url 'signup' %}" class="btn btn-link">{% trans 'Sign up for bubu' %}</a>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
         </div>
-      </form>
+        <!-- /.col -->
+      </div>
+    </form>
+
+    <div class="social-auth-links text-center">
+      <p>- OR -</p>
+      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
+        Facebook</a>
+      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
+        Google+</a>
     </div>
+    <!-- /.social-auth-links -->
+
+    <a href="#">I forgot my password</a><br>
+    <a href="{% url 'signup' %}" class="text-center">Register a new membership</a>
+
   </div>
   <script src="{% static 'js/ga.js' %}"></script>
+<script src="{% static 'dist/js/app.min.js'%}"></script>
+<!-- iCheck -->
+<script src="{% static 'plugins/iCheck/icheck.min.js'%}"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' // optional
+    });
+  });
+</script>
 {% endblock body %}
