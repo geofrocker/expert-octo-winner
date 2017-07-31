@@ -40,6 +40,7 @@ urlpatterns = [
     url(r'^i18n/', include('django.conf.urls.i18n', namespace='i18n')),
     url(r'^(?P<username>[^/]+)/following/$', activities_views.following, name='following'),
     url(r'^(?P<username>[^/]+)/followers/$', activities_views.followers, name='followers'),
+    url(r'^oauth/', include('social_django.urls', namespace='social')),
 ]
 
 handler404 = core_views.error_handler

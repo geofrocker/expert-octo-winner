@@ -34,7 +34,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-
+    'social_django',
     'bubu.activities',
     'bubu.articles',
     'bubu.authentication',
@@ -56,6 +56,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 )
 
 ROOT_URLCONF = 'bubu.urls'
@@ -75,11 +76,25 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
             'debug': DEBUG
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_FACEBOOK_KEY = '482173618798027'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '5ca728bac5ab02a4207298181ebdfed4'  # App Secret
 
 #Set this to True to avoid transmitting the CSRF cookie over HTTP accidentally.
 CSRF_COOKIE_SECURE=True
@@ -135,6 +150,9 @@ MEDIA_ROOT = PROJECT_DIR.parent.child('media')
 MEDIA_URL = '/media/'
 
 LOGIN_URL = '/'
+LOGIN_REDIRECT_URL = '/feeds/'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = '/feeds/'
 
 ALLOWED_SIGNUP_DOMAINS = ['*']
