@@ -4,7 +4,7 @@
 <li feed-id="{{ feed.pk }}" csrf="{{ csrf_token }}">
   <div class="feed-container">
     <a href="{% url 'profile' feed.user.username %}"><img src="{{ feed.user.profile.get_picture }}" class="user img-circle img-bordered-sm online"></a>
-    <div class="post" feed-id="{{ feed.pk }}">
+    <div class="post">
       {% if feed.user == user or user == superuser %}
         <span class="fa fa-remove remove-feed" title="{% trans 'Click to remove this feed' %}"></span>
       {% endif %}
@@ -35,7 +35,7 @@
         <form role="form" method="post" action="{{ comment }}" onsubmit="return false">
           {% csrf_token %}
           <input type="hidden" name="feed" value="{{ feed.pk }}">
-          <input type="text" class="form-control input-sm flat" placeholder="{% trans 'Write a comment...' %}" name="post" maxlength="255">
+          <input type="text" class="form-control input-sm flat" id="standalone2" placeholder="{% trans 'Write a comment...' %}" name="post" maxlength="255">
         </form>
         <ol class="clearfix">
           {% comment %} Place holder to load feed comments {% endcomment %}
@@ -44,3 +44,11 @@
     </div>
   </div>
 </li>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#standalone2").emojioneArea({
+      autocomplete: false,
+    
+    });
+  });
+</script>
