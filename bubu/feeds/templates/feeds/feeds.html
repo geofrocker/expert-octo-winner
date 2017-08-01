@@ -37,7 +37,7 @@
                   {% csrf_token %}
                   <input type="hidden" name="last_feed">
                   <div class="form-group" id="form-group">
-                    <textarea class="form-control flat" rows="3" name="post" id="standalone" placeholder="What is on your mind!" ></textarea>
+                    <textarea class="form-control flat" rows="3" name="post" id="example" placeholder="What is on your mind!" ></textarea>
                   </div>
                   <div class="form-group">
                     <button type="button" class="btn btn-primary btn-post btn-flat">
@@ -126,16 +126,6 @@ function imgError(image) {
     return true;
   }
 </script>
-<script type="text/javascript">
-  $(document).ready(function() {
-    $("#standalone").emojioneArea({
-      autocomplete: false,
-      pickerPosition: "bottom",
-      tonesStyle: "radio"
-    });
-  });
-</script>
-
 
 
 
