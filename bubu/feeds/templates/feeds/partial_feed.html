@@ -35,7 +35,7 @@
         <form role="form" method="post" action="{{ comment }}" onsubmit="return false">
           {% csrf_token %}
           <input type="hidden" name="feed" value="{{ feed.pk }}">
-          <input type="text" class="form-control input-sm flat" id="standalone2" placeholder="{% trans 'Write a comment...' %}" name="post" maxlength="255">
+          <input type="text" class="form-control input-sm flat" id="standalone{{feed.pk}}" placeholder="{% trans 'Write a comment...' %}" name="post" maxlength="255">
         </form>
         <ol class="clearfix">
           {% comment %} Place holder to load feed comments {% endcomment %}
@@ -46,8 +46,10 @@
 </li>
 <script type="text/javascript">
   $(document).ready(function() {
-    $("#standalone2").emojioneArea({
+    $("#standalone{{feed.pk}}").emojioneArea({
       autocomplete: false,
+      pickerPosition: "bottom",
+      tonesStyle: "radio"
     
     });
   });
