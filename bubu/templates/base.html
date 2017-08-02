@@ -42,7 +42,6 @@
     }
   </script>
   <link rel="stylesheet" type="text/css" href="{% static 'emoji/emojionearea.min.css'%}">
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   <script type="text/javascript" src="{% static 'emoji/emojionearea.js'%}"></script>
 
 
@@ -89,7 +88,7 @@
           <!-- Notifications: style can be found in dropdown.less -->
           
           <li>
-            <a href="#" id="notifications" data-container="body" data-toggle="popover" data-placement="bottom" title="Notifications">
+            <a href="" id="notifications" data-container="body" data-toggle="popover" data-placement="bottom" title="Notifications">
               <span class="fa fa-bell-o"></span>
             </a>
           </li>
@@ -100,7 +99,7 @@
           
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
-            <a href="" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="{{user.profile.get_picture}}" class="user-image img-circle img-bordered-sm" alt="User Image">
               <span class="hidden-xs">{{ user.profile.get_screen_name }}</span>
             </a>
@@ -210,7 +209,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0.0
     </div>
-    <strong>Copyright &copy; 2017-2019 <a href="http://www.elemi.com">Be ugandan Buy Ugandan</a>.</strong> All rights
+    <strong>Copyright &copy; 2017-2019 <a href="http://www.gelem.com">Be ugandan Buy Ugandan</a>.</strong> All rights
     reserved.
   </footer>
 
