@@ -43,7 +43,7 @@ class Profile(models.Model):
             if os.path.isfile(filename):
                 return picture_url
             else:
-                gravatar_url = 'http://lorempixel.com/200/200/sports/8/'
+                gravatar_url = 'https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/img/avatar.png'
                 return gravatar_url
 
         except Exception:
