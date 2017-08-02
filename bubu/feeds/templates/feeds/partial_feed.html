@@ -2,8 +2,14 @@
 {% load humanize %}
 
 <li feed-id="{{ feed.pk }}" csrf="{{ csrf_token }}">
+<style type="text/css">
+    .feed-container {
+          color: transparent;  
+          text-shadow: 0 0 0 red;
+        }
+</style>
   <div class="feed-container">
-    <a href="{% url 'profile' feed.user.username %}"><img src="{{ feed.user.profile.get_picture }}" class="user img-circle img-bordered-sm online" onerror="imgErrorUser(this);"></a>
+    <a href="{% url 'profile' feed.user.username %}"><img src="{{ feed.user.profile.get_picture }}" class="user img-circle img-bordered-sm online"></a>
     <div class="post">
       {% if feed.user == user or user == superuser %}
         <span class="fa fa-remove remove-feed" title="{% trans 'Click to remove this feed' %}"></span>
