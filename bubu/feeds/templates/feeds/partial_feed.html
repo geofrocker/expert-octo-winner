@@ -11,7 +11,7 @@
       <h3><a href="{% url 'profile' feed.user.username %}">{{ feed.user.profile.get_screen_name }}</a> <small>{{ feed.date|naturaltime }}</small></h3>
       <p>{{ feed.linkfy_post|safe }}</p>
       <div class="interaction">
-      <a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}{{feed.pk}}" class="text-sm pull-right" target="_blank"><i class="fa fa-facebook-official margin-r-5"></i> </a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}" class="text-sm pull-right" target="_blank"><i class="fa fa-facebook-official margin-r-5"></i> </a>
         {% if user in feed.get_likers %}
           
           <a href="#" class="like unlike link-black text-sm">
