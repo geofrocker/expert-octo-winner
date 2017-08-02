@@ -130,7 +130,7 @@ LANGUAGES = (
 
 LOCALE_PATHS = (PROJECT_DIR.child('locale'), )
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
