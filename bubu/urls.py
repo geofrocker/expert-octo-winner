@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib import admin
 from django.conf.urls import include, url
 from django.conf.urls import handler404, handler500
 from django.conf.urls.static import static
@@ -10,6 +11,7 @@ from bubu.core import views as core_views
 from bubu.products import views as product_views
 from bubu.search import views as search_views
 urlpatterns = [
+    url(r'^admin/', admin.site.urls),
     url(r'^$', core_views.home, name='home'),
     url(r'^login', auth_views.login, {'template_name': 'core/cover.html'},
         name='login'),
