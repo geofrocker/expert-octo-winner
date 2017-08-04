@@ -100,13 +100,13 @@ SOCIAL_AUTH_TWITTER_KEY = 'YHSQclrmiYPJ2rj9wulO9MorK'
 SOCIAL_AUTH_TWITTER_SECRET = 'ItdLgnxHBCMMUhXoIy22CmGBDZMOnzomB7jcCFRNtEiScFtgYD'
 
 #Set this to True to avoid transmitting the CSRF cookie over HTTP accidentally.
-#CF_COOKIE_SECURE=True
+CF_COOKIE_SECURE=True
 
 
 #Set this to True to avoid transmitting the session cookie over HTTP accidentally.
-#SESSION_COOKIE_SECURE=True
+SESSION_COOKIE_SECURE=True
 
-#CSRF_COOKIE_HTTPONLY=True
+CSRF_COOKIE_HTTPONLY=True
 
 
 # Internationalization
