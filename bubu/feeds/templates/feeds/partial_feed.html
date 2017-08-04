@@ -3,9 +3,9 @@
 
 <li feed-id="{{ feed.pk }}" csrf="{{ csrf_token }}">
   <div class="feed-container">
-    <a href="{% url 'profile' feed.user.username %}"><img src="{{ feed.user.profile.get_picture }}" class="user img-circle img-bordered-sm online"></a>
+    <a href="{% url 'profile' feed.user.username %}"><img src="{{ feed.user.profile.get_picture }}" class="user img-circle img-bordered-sm online" onerror="imgErrorUser(this);"></a>
     <div class="post">
-      {% if feed.user == user or user == superuser %}
+      {% if feed.user == user or user.is_superuser == True %}
         <span class="fa fa-remove remove-feed" title="{% trans 'Click to remove this feed' %}"></span>
       {% endif %}
       <h3><a href="{% url 'profile' feed.user.username %}">{{ feed.user.profile.get_screen_name }}</a> <small>{{ feed.date|naturaltime }}</small></h3>
@@ -44,3 +44,4 @@
     </div>
   </div>
 </li>
+

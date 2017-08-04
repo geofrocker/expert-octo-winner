@@ -235,8 +235,19 @@ function imgErrorUser(image) {
     return true;
   }
 </script>
-
-{% endblock body %}
 <script src="{% static 'js/ga.js' %}"></script>
+<!-- iCheck -->
+<script src="{% static 'plugins/iCheck/icheck.min.js'%}"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' // optional
+    });
+  });
+</script>
+{% endblock body %}
+
 </body>
 </html>

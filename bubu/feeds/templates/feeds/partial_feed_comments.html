@@ -7,7 +7,7 @@
       <span class="glyphicon glyphicon-remove remove-feed" title="{% trans 'Click to remove this comment' %}"></span>
     {% endif %}
     <a href="{% url 'profile' comment.user.username %}">
-      <img src="{{ comment.user.profile.get_picture }}" class="user-comment">
+      <img src="{{ comment.user.profile.get_picture }}" class="user-comment" onerror="imgErrorUser(this);">
     </a>
     <h4>
       <a href="{% url 'profile' comment.user.username %}">
