@@ -1,5 +1,4 @@
 import json
-
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import (HttpResponse, HttpResponseBadRequest,
@@ -136,7 +135,7 @@ def like(request):
     if like:
         user.profile.unotify_liked(feed)
         like.delete()
-
+        
     else:
         like = Activity(activity_type=Activity.LIKE, feed=feed_id, user=user)
         like.save()

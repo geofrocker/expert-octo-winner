@@ -46,11 +46,14 @@ $(function () {
       last_feed = "0";
     }
     $("#compose-form input[name='last_feed']").val(last_feed);
+    var data = new FormData($('form').get(0));
     $.ajax({
       url: '/feeds/post/',
       data: $("#compose-form").serialize(),
       type: 'post',
       cache: false,
+      // Tell jQuery not to process data or worry about content-type
+      // You *must* include these options!
       success: function (data) {
         $("ul.stream").prepend(data);
         $(".compose").slideUp();
