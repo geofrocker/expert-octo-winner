@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^feeds/', include('bubu.feeds.urls')),
     url(r'^questions/', include('bubu.questions.urls')),
     url(r'^activity/', include('bubu.activities.urls')),
-    url(r'^products/', include('bubu.products.urls')),
+    url(r'^products/', include('bubu.products.urls', namespace='products')),
     url(r'^articles/', include('bubu.articles.urls')),
     url(r'^messages/', include('bubu.messenger.urls')),
     url(r'^notifications/$', activities_views.notifications,

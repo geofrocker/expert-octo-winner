@@ -39,7 +39,7 @@ class Post(models.Model):
 		return self.product_Name
 
 	def get_absolute_url(self):
-		return reverse("posts:detail", kwargs={"slug": self.slug })
+		return reverse("products:detail", kwargs={"slug": self.slug })
 		#return "/posts/%s/" %(self.id)
 	class Meta:
 		ordering=["-timestamp","-updated"]
