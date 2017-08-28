@@ -15,7 +15,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">{% trans 'Log in' %} to start your session</p>
+    <p class="login-box-msg">{% trans 'Log in' %} or <a href="{% url 'signup' %}">signup for an account</a></p>
     {% if form.non_field_errors %}
       {% for error in form.non_field_errors %}
         <div class="alert alert-danger alert-dismissable">
@@ -28,14 +28,14 @@
     <form method="post" action="{% url 'login' %}" role="form">
     {% csrf_token %}
       <div class="form-group has-feedback{% if form.username.errors %} has-error{% endif %}">
-        <input type="text" class="form-control flat" id="username" name="username">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <input type="text" class="form-control flat" id="username" name="username" placeholder="Username">
+        <span class="fa fa-user form-control-feedback"></span>
         {% for error in form.username.errors %}
             <label class="control-label">{{ error }}</label>
         {% endfor %}
       </div>
       <div class="form-group has-feedback{% if form.password.errors %} has-error{% endif %}">
-        <input type="password" class="form-control flat" id="password" name="password">
+        <input type="password" class="form-control flat" id="password" name="password" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         {% for error in form.password.errors %}
             <label class="control-label">{{ error }}</label>
@@ -67,7 +67,7 @@
     <!-- /.social-auth-links -->
 
     <a href="#">I forgot my password</a><br>
-    <a href="{% url 'signup' %}" class="text-center">Register a new membership</a>
+    <a href="{% url 'signup' %}" class="text-center">Sign up for an account</a>
 
   </div>
   <script src="{% static 'js/ga.js' %}"></script>

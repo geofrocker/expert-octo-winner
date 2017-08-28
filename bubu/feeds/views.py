@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import (HttpResponse, HttpResponseBadRequest,
                          HttpResponseForbidden)
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404,render,redirect
 from django.template.context_processors import csrf
 from django.template.loader import render_to_string
 
@@ -11,6 +11,8 @@ from bubu.activities.models import Activity
 from bubu.decorators import ajax_required
 from bubu.feeds.models import Feed
 from bubu.products.models import Post
+from PIL import Image
+from bubu.feeds.forms import FeedForm
 
 
 FEEDS_NUM_PAGES = 10
@@ -123,6 +125,20 @@ def post(request):
     html = _html_feeds(last_feed, user, csrf_token)
     return HttpResponse(html)
 
+@login_required
+def image_post(request):
+    if request.method == 'POST':
+        form = FeedForm(request.POST, request.FILES)
+        if form.is_valid():
+            instance=form.save(commit=False)
+            instance.user=request.user
+            instance.save()
+            return redirect('feeds')
+    else:
+        form = FeedForm()
+    return render(request, 'feeds/feed_form.html', {
+        'form': form
+    })
 
 @login_required
 @ajax_required

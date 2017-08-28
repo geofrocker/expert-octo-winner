@@ -52,8 +52,6 @@ $(function () {
       data: $("#compose-form").serialize(),
       type: 'post',
       cache: false,
-      // Tell jQuery not to process data or worry about content-type
-      // You *must* include these options!
       success: function (data) {
         $("ul.stream").prepend(data);
         $(".compose").slideUp();

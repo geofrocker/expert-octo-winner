@@ -5,6 +5,7 @@ from bubu.feeds import views
 urlpatterns = [
     url(r'^$', views.feeds, name='feeds'),
     url(r'^post/$', views.post, name='post'),
+    url(r'^image_post/$', views.image_post, name='image_post'),
     url(r'^like/$', views.like, name='like'),
     url(r'^comment/$', views.comment, name='comment'),
     url(r'^load/$', views.load, name='load'),

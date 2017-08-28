@@ -54,18 +54,18 @@ def UniqueUsernameIgnoreCaseValidator(value):
 
 class SignUpForm(forms.ModelForm):
     username = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'form-control flat'}),
+        widget=forms.TextInput(attrs={'class': 'form-control flat', 'placeholder':'Username'}),
         max_length=30,
         required=True,
         help_text='Usernames may contain <strong>alphanumeric</strong>, <strong>_</strong> and <strong>.</strong> characters')  # noqa: E261
     password = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': 'form-control flat'}))
+        widget=forms.PasswordInput(attrs={'class': 'form-control flat', 'placeholder':'Password'}))
     confirm_password = forms.CharField(
-        widget=forms.PasswordInput(attrs={'class': 'form-control flat'}),
+        widget=forms.PasswordInput(attrs={'class': 'form-control flat', 'placeholder':'Re-Enter Password'}),
         label="Confirm your password",
         required=True)
     email = forms.CharField(
-        widget=forms.EmailInput(attrs={'class': 'form-control flat'}),
+        widget=forms.EmailInput(attrs={'class': 'form-control flat', 'placeholder':'Email address'}),
         required=True,
         max_length=75)
 

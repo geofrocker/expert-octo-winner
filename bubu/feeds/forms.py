@@ -10,4 +10,4 @@ class FeedForm(forms.ModelForm):
     
     class Meta:
         model = Feed
-        fields = ['post', 'photo',]
+        fields = ['post', 'image',]

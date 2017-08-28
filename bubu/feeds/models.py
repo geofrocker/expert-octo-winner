@@ -15,6 +15,7 @@ class Feed(models.Model):
     user = models.ForeignKey(User)
     date = models.DateTimeField(auto_now_add=True)
     post = models.TextField(max_length=255)
+    image=models.ImageField(upload_to='timeline/', blank=True)
     parent = models.ForeignKey('Feed', null=True, blank=True)
     likes = models.IntegerField(default=0)
     comments = models.IntegerField(default=0)
