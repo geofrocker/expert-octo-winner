@@ -104,7 +104,7 @@ CF_COOKIE_SECURE=True
 
 
 #Set this to True to avoid transmitting the session cookie over HTTP accidentally.
-#SESSION_COOKIE_SECURE=True
+SESSION_COOKIE_SECURE=True
 
 CSRF_COOKIE_HTTPONLY=True
 
@@ -143,13 +143,15 @@ AWS_LOCATION = 'static'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'bubu/static'),
 ]
+
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
+LOCATION= 'media'
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, LOCATION)
 DEFAULT_FILE_STORAGE = 'bubu.storage_backends.MediaStorage'
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
+MEDIA_ROOT=MEDIA_URL
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
@@ -165,8 +167,6 @@ STATICFILES_DIRS = (
 #django-crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-MEDIA_ROOT = PROJECT_DIR.parent.child('media')
-MEDIA_URL = '/media/'
 
 LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/feeds/'
