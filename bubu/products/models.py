@@ -22,7 +22,7 @@ class Post(models.Model):
 	country = CountryField(blank_label='(select country)')
 	location=models.CharField(max_length=200)
 	phone=models.CharField(max_length=15)
-	image=models.ImageField(null=True, blank=True,
+	image=models.ImageField(upload_to='products/',null=True, blank=True,
 		width_field="width_field",
 		height_field="height_field")
 	height_field=models.IntegerField(default=0)
