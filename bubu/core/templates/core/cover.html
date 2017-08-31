@@ -25,17 +25,17 @@
       {% endfor %}
     {% endif %}
 
-    <form method="post" action="{% url 'login' %}" role="form">
+    <form method="post" action="{% url 'login' %}" role="form" autocomplete="off">
     {% csrf_token %}
       <div class="form-group has-feedback{% if form.username.errors %} has-error{% endif %}">
-        <input type="text" class="form-control flat" id="username" name="username" placeholder="Username">
+        <input type="text" class="form-control flat" id="username" name="username" placeholder="Username"  autocomplete="off">
         <span class="fa fa-user form-control-feedback"></span>
         {% for error in form.username.errors %}
             <label class="control-label">{{ error }}</label>
         {% endfor %}
       </div>
       <div class="form-group has-feedback{% if form.password.errors %} has-error{% endif %}">
-        <input type="password" class="form-control flat" id="password" name="password" placeholder="Password">
+        <input type="password" class="form-control flat" id="password" name="password" placeholder="Password"  autocomplete="off">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         {% for error in form.password.errors %}
             <label class="control-label">{{ error }}</label>
