@@ -26,7 +26,7 @@ class Feed(models.Model):
         ordering = ('-date',)
 
     def __str__(self):
-        return self.post
+        return (self.post)
 
     @staticmethod
     def get_feeds(from_feed=None):
