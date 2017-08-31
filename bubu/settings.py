@@ -146,11 +146,10 @@ STATICFILES_DIRS = [
 
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 DEFAULT_FILE_STORAGE = 'bubu.storage_backends.MediaStorage'
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-MEDIA_ROOT=MEDIA_URL
+MEDIA_ROOT=STATIC_URL
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
