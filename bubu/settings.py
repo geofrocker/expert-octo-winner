@@ -104,7 +104,7 @@ CF_COOKIE_SECURE=True
 
 
 #Set this to True to avoid transmitting the session cookie over HTTP accidentally.
-#SESSION_COOKIE_SECURE=True
+SESSION_COOKIE_SECURE=True
 
 CSRF_COOKIE_HTTPONLY=True
 
