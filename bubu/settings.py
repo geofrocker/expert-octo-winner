@@ -149,8 +149,8 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'bubu.storage_backends.MediaStorage'
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-MEDIA_ROOT = PROJECT_DIR.parent.child('media')
-MEDIA_URL = '/media/'
+
+MEDIA_ROOT = '/media/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
