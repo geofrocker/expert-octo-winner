@@ -53,6 +53,7 @@ def post_detail(request, slug=None):#retrieve
 	}
 	return render(request, "products/post_detail.html", context)
 	return render(request, "products/post_list.html", context)
+@login_required
 def post_list(request):#list items
 	today=timezone.now().date()
 	queryset_list=Post.objects.order_by("-timestamp")
