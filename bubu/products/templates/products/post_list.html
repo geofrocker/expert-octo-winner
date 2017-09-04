@@ -11,8 +11,6 @@
             {% load staticfiles %}
             {% if product.image %}
               <a href="{{ product.get_absolute_url }}"><img src="{{product.image.url}}" class="post-detail-item img" alt="Lights" onerror="imgError(this);" ></a>
-            {% elif product.images %}
-              <a href="{{ product.get_absolute_url }}"><img src="{{product.images.url}}" class="post-detail-item img" alt="Lights" onerror="imgError(this);" ></a>
             {%endif%}
               <div class="caption">
                 <p>{{product.product_Name|truncatechars_html:21}}</p>
@@ -47,7 +45,7 @@
 <script type="text/javascript">
 function imgError(image) {
     image.onerror = "";
-    image.src = "http://lorempixel.com/200/200/sports/Product/";
+    image.src = "https://s3.us-east-2.amazonaws.com/gelem-static/media/products/graphic_product_tangible.png";
     return true;
 }
 </script>
