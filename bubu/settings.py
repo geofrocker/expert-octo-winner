@@ -130,7 +130,7 @@ LANGUAGES = (
 
 LOCALE_PATHS = (PROJECT_DIR.child('locale'), )
 
-#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 AWS_ACCESS_KEY_ID =config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY =config('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'gelem-static'
