@@ -130,7 +130,7 @@ LANGUAGES = (
 
 LOCALE_PATHS = (PROJECT_DIR.child('locale'), )
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 AWS_ACCESS_KEY_ID =config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY =config('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'gelem-static'
@@ -148,9 +148,6 @@ STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 MEDIAFILES_LOCATION = 'media'
-
-
-
 DEFAULT_FILE_STORAGE = 'bubu.storage_backends.MediaStorage'
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -165,7 +162,7 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 
-MEDIA_ROOT = PROJECT_DIR.parent.child('media')
+MEDIA_ROOT = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 MEDIA_URL = '/media/'
 
 # Static files (CSS, JavaScript, Images)
