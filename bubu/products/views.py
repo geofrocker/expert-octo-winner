@@ -56,29 +56,9 @@ def post_detail(request, slug=None):#retrieve
 def post_list(request):#list items
 	today=timezone.now().date()
 	queryset_list=Post.objects.order_by("-timestamp")
-	if request.user.is_staff or request.user.is_superuser:
-		#user_id=1
-		queryset_list=Post.objects.all().order_by("-timestamp")
-	search=request.GET.get("q")
-	if search:
-		queryset_list=queryset_list.filter(
-			Q(product_Name__icontains=search)|
-			Q(description__icontains=search)|
-			Q(user__first_name__icontains=search)|
-			Q(user__last_name__icontains=search)
-			).distinct()
-	paginator=Paginator(queryset_list,16)
-	page=request.GET.get('page')
-	try:
-		queryset=paginator.page(page)
-	except PageNotAnInteger:
-		queryset=paginator.page(1)
-	except EmptyPage:
-		queryset=paginator.page(paginator.num_pages)
-
+	
 	context={
-		"object_list":queryset,
-		"product_Name":"List",
+		"object_list":queryset_list,
 		"today":today,
 		}
 	return render(request,"products/post_list.html",context)
