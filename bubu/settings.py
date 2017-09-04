@@ -147,7 +147,7 @@ STATICFILES_DIRS = [
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-MEDIAFILES_LOCATION = 'media'
+MEDIAFILES_LOCATION = 'gelem-static/media'
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 
 DEFAULT_FILE_STORAGE = 'bubu.storage_backends.MediaStorage'
