@@ -15,11 +15,20 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=True, cast=bool)
 EMAIL_PORT = config('EMAIL_PORT', cast=int)
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
-}
+DATABASES = {}
+if os.environ.get('DATABASE_URL'):
+    DATABASES['default'] = dj_database_url.config(default=config('DATABASE_URL'))
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': './database.sqlite',
+            'USER': '',
+            'PASSWORD': '',
+            'HOST': '',
+            'PORT': '',
+        }
+    }
 
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
@@ -58,6 +67,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
 )
 
 ROOT_URLCONF = 'bubu.urls'
@@ -100,13 +110,15 @@ SOCIAL_AUTH_TWITTER_KEY = 'YHSQclrmiYPJ2rj9wulO9MorK'
 SOCIAL_AUTH_TWITTER_SECRET = 'ItdLgnxHBCMMUhXoIy22CmGBDZMOnzomB7jcCFRNtEiScFtgYD'
 
 #Set this to True to avoid transmitting the CSRF cookie over HTTP accidentally.
-CF_COOKIE_SECURE=True
+CF_COOKIE_SECURE=config('CF_COOKIE_SECURE')
 
 
 #Set this to True to avoid transmitting the session cookie over HTTP accidentally.
-SESSION_COOKIE_SECURE=True
+if not DEBUG:
+    SESSION_COOKIE_SECURE=config('SESSION_COOKIE_SECURE')
 
-CSRF_COOKIE_HTTPONLY=True
+CSRF_COOKIE_HTTPONLY=config('CSRF_COOKIE_HTTPONLY')
+X_FRAME_OPTIONS = 'DENY'
 
 
 # Internationalization

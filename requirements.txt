@@ -42,7 +42,7 @@ mendeley==0.3.2
 oauthlib==2.0.2
 olefile==0.44
 Pillow==3.4.2
-psycopg2==2.6.2
+psycopg2==2.7.2
 PyJWT==1.5.2
 python-dateutil==2.6.0
 python-decouple==3.0
@@ -63,3 +63,4 @@ virtualenvwrapper-win==1.2.1
 Werkzeug==0.12.2
 whitenoise==3.2.2
 xlwt==1.1.2
+parse

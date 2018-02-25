@@ -28,7 +28,7 @@
     <form method="post" action="{% url 'login' %}" role="form" autocomplete="off">
     {% csrf_token %}
       <div class="form-group has-feedback{% if form.username.errors %} has-error{% endif %}">
-        <input type="text" class="form-control flat" id="username" name="username" placeholder="Username"  autocomplete="off">
+        <input type="text" class="form-control flat" id="username" name="username" placeholder="Username"  autocomplete="on">
         <span class="fa fa-user form-control-feedback"></span>
         {% for error in form.username.errors %}
             <label class="control-label">{{ error }}</label>
