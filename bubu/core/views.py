@@ -16,7 +16,7 @@ from django.http import HttpResponse
 from django.template import Context, loader
 from django.views.decorators.clickjacking import xframe_options_exempt
 
-@xframe_options_exempt
+# @xframe_options_exempt
 def home(request):
     if request.user.is_authenticated():
         return feeds(request)
