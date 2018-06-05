@@ -118,7 +118,7 @@ if not DEBUG:
     SESSION_COOKIE_SECURE=config('SESSION_COOKIE_SECURE')
 
 CSRF_COOKIE_HTTPONLY=config('CSRF_COOKIE_HTTPONLY')
-X_FRAME_OPTIONS = 'ALLOW-FROM http://geofrey.ga/'
+# X_FRAME_OPTIONS = 'ALLOW-FROM http://geofrey.ga/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
