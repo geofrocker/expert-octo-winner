@@ -60,7 +60,7 @@ Unipath==1.1
 urllib3==1.21.1
 virtualenv==15.1.0
 virtualenvwrapper-win==1.2.1
-Werkzeug==0.12.2
+Werkzeug==0.15.3
 whitenoise==3.2.2
 xlwt==1.1.2
 parse
