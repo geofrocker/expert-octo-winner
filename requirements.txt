@@ -15,7 +15,7 @@ django-authtools==1.5.0
 django-braces==1.11.0
 django-countries==4.5
 django-crispy-forms==1.6.1
-django-debug-toolbar==1.8
+django-debug-toolbar==1.11.1
 django-environ==0.4.3
 django-extensions==1.5.5
 django-markdown-deux==1.0.5
